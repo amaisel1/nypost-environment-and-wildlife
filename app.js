@@ -1,4 +1,5 @@
 d3.csv("Environment_Wildlife_Stories_Cleaned.csv").then(function(data) {
+console.log("CSV loaded:", data);
 
   var button = d3.select("#button");
   var form = d3.select("#form");
