@@ -21,7 +21,7 @@ d3.csv("Environment_Wildlife_Stories_Cleaned.csv").then(function(data) {
 
     var filtered = data.filter(d => d.headline.includes(inputValue));
 
-    var output = _.sortBy(filtered, 'avg_vote').reverse();
+    var output = _.sortBy(filtered, 'year').reverse();
 
     for (var i = 0; i < output.length; i++) {
       d3.select("tbody").insert("tr").html(
