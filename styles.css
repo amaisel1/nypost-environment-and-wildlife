@@ -9,7 +9,8 @@ body {
 }
 
 hr {
-  height: 4px;
+  height: 10px;
+  border: none;
   background-color: #CC3333;
   margin: 20px;
 }
