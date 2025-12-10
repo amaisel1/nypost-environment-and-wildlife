@@ -35,7 +35,7 @@ d3.csv("Environment_Wildlife_Stories_Cleaned.csv")
                   "<td>" + (i+1) + "</td>" +
                   "<td>" + filtered[i]['headline'] + "</td>" +
                   "<td>" + filtered[i]['excerpt'] + "</td>" +
-                  "<td>" + filtered[i]['display date'] + "</td>"
+                  "<td>" + filtered[i]['display_date'] + "</td>"
               );
           }
       }
