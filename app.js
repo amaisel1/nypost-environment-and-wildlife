@@ -11,15 +11,16 @@ d3.csv("Environment_Wildlife_Stories_Cleaned.csv")
       var button = d3.select("#button");
       var form = d3.select("#form");
 
-      button.on("click", event => {
-          event.preventDefault();
-          runEnter();
-      });
+button.on("click", function() {
+    d3.event.preventDefault();
+    runEnter();
+});
 
-      form.on("submit", event => {
-          event.preventDefault();
-          runEnter();
-      });
+form.on("submit", function() {
+    d3.event.preventDefault();
+    runEnter();
+});
+
 
       function runEnter() {
           d3.select("tbody").html(""); 
