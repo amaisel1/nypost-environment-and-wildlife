@@ -68,78 +68,71 @@
 
 
 </div>
-<div class = "ticker-container">
-        <ul id = "ticker">
-            <li>
-                lorem ipsum
-            </li>
-            <li>
-                hello alana!
-            </li>
-            <li>
-                is this working?
-            </li>
-        </ul>
+<div class="ticker-container">
+    <ul id="ticker">
+        <li>default headlines</li>
+        <li>error found!</li>
+        <li>no headlines?</li>
+    </ul>
 </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script>
-        // Load headlines automatically on page load
-        async function loadHeadlines() {
-            try {
-                // Replace 'headlines.csv' with your file path
-                const response = await fetch('Environment_Wildlife_Stories_Cleaned.csv');
-                const content = await response.text();
-                
-                let headlines = [];
 
-                // Try parsing as CSV first
-                Papa.parse(content, {
-                    complete: function(results) {
-                        results.data.forEach(row => {
-                            if (row[0] && row[0].trim()) {
-                                headlines.push(row[0].trim());
-                            }
-                        });
-                        
-                        if (headlines.length > 0) {
-                            populateTicker(headlines);
-                        }
-                    },
-                    skipEmptyLines: true
-                });
-            } catch (error) {
-                console.error('Error loading headlines:', error);
-                // Keep default headlines if file fails to load
-            }
-        }
-
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
-
-        function populateTicker(headlines) {
-            const shuffled = shuffleArray(headlines);
-            const ticker = document.getElementById('ticker');
-            ticker.innerHTML = '';
-
-            // Duplicate headlines twice to ensure seamless loop
-            const tripled = [...shuffled, ...shuffled, ...shuffled];
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script>
+    async function loadHeadlines() {
+        try {
+            const response = await fetch('Environment_Wildlife_Stories_Cleaned.csv');
+            const content = await response.text();
             
-            tripled.forEach(headline => {
-                const li = document.createElement('li');
-                li.textContent = headline;
-                ticker.appendChild(li);
-            });
-        }
+            let headlines = [];
 
-        // Load headlines when page loads
-        window.addEventListener('DOMContentLoaded', loadHeadlines);
-    </script>
+            Papa.parse(content, {
+                complete: function(results) {
+                    results.data.forEach(row => {
+                        if (row[0] && row[0].trim()) {
+                            headlines.push(row[0].trim());
+                        }
+                    });
+                    
+                    if (headlines.length > 0) {
+                        populateTicker(headlines);
+                    }
+                },
+                skipEmptyLines: true
+            });
+        } catch (error) {
+            console.error('Error loading headlines:', error);
+        }
+    }
+
+    function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
+    function populateTicker(headlines) {
+        const shuffled = shuffleArray(headlines);
+        const ticker = document.getElementById('ticker');
+        ticker.innerHTML = '';
+
+        // Use only first 50-100 headlines for performance
+        const subset = shuffled.slice(0, 50);
+        
+        // Duplicate for seamless loop
+        const doubled = [...subset, ...subset];
+        
+        doubled.forEach(headline => {
+            const li = document.createElement('li');
+            li.textContent = headline;
+            ticker.appendChild(li);
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadHeadlines);
+</script>
 
 <footer> by <a href="https://amaisel1.github.io">alana maisel</a> 2026</footer>
 </body>
