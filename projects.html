@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Alana Maisel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Uchen&family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
+    <style>
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            color: black;
+            opacity: .5;
+        }
+        a:any-link {
+            color: black;
+        }
+        ::selection {
+            background-color: azure;
+        }
+
+        h1 {
+            font-family: "Uchen", serif;
+            font-weight: 400;
+            font-style: normal;
+            margin: 0;
+            font-size: 40px;
+        }
+        h2 {
+            font-family: "Uchen", serif;
+            font-weight: 400;
+            font-style: normal;
+            margin: 0;
+            text-decoration: underline;
+        }
+        h3 {
+            font-family: "Uchen", serif;
+            font-weight: 400;
+            font-style: normal;
+            margin: 0;
+        }
+        h1 a {
+            color: black;
+            text-decoration: none;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+        }
+
+        li a {
+            font-family: "Jacquarda Bastarda 9", serif;
+            font-weight: 400;
+            font-style: normal;
+            text-align: center;
+            font-size: 25px;
+            padding: 30px;
+            text-decoration-line: none;
+        }
+
+        p {
+            font-family: "Uchen", sans-serif;
+        }
+
+        body {
+            background-color: #ebebe0;
+            margin: 0;
+            padding: 0;
+        }
+
+        footer {
+            font-family: "Jacquarda Bastarda 9", serif;
+            font-weight: 400;
+            font-style: normal;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .headernavbar {
+            display: flex;
+            z-index: 10;
+            background-color: rgb(216 224 215 / 50%);
+            flex-wrap: wrap;
+            position: fixed;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-evenly;
+            top: 0;
+        }
+
+        .pagecontent {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding-top: 150px;
+            padding-bottom: 100px;
+        }
+
+        .project-section {
+            border-right: solid;
+            border-left: solid;
+            border-width: thin;
+            margin-left: 20%;
+            margin-right: 20%;
+            padding: 30px;
+            margin-bottom: 50px;
+            background-color: rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project-image {
+            flex: 1;
+            max-width: 45%;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            border: solid;
+            border-width: thin;
+        }
+
+        @media (max-width: 968px) {
+            .project-section {
+                flex-direction: column;
+            }
+            .project-image {
+                max-width: 100%;
+            }
+        }
+
+        .project-title {
+            font-family: "Uchen", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        .project-meta {
+            font-family: "Uchen", sans-serif;
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .project-description {
+            font-family: "Uchen", sans-serif;
+            font-size: 10pt;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-description p {
+            margin-bottom: 15px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .project-links a {
+            font-family: "Jacquarda Bastarda 9", serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: solid;
+            border-width: thin;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        hr {
+            border: none;
+            border-top: solid;
+            border-width: thin;
+            margin: 40px 20%;
+        }
+    </style>
+</head>
+<body>
+    <div class="headernavbar">
+        <h1><a href="index.html">Alana Maisel</a></h1>
+        <nav>
+            <ul>
+                <li><a href="about.html">about</a></li>
+                <li><a href="resume.html">resume</a></li>
+                <li><a href="projects.html">projects</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="pagecontent">
+        <div class="project-section">
+            <div class="project-content">
+                <h2 class="project-title">The Environment and Wildlife of the New York Post</h2>
+                <div class="project-meta">Programming for Cultural Heritage, Fall 2025</div>
+                
+                <div class="project-description">
+                    <p>
+                        A web-scraped dataset and AI model exploring over 2,400 articles from The New York Post's Environment and Wildlife sections, spanning 2013 to 2025. This project examines how sensationalist media shapes narratives around environmental issues and wildlife coverage.
+                    </p>
+                    <p>
+                        An experimental AI model trained on this dataset generates fictional headlines that parody the paper's editorial style, offering a creative lens for examining narrative construction and algorithmic content consumption in contemporary media.
+                    </p>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-image">
+                <img src="nypost-screenshot.png" alt="NYPost Environment and Wildlife project screenshot">
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="project-section">
+            <div class="project-content">
+                <h2 class="project-title">What's on my Chatelaine?</h2>
+                <div class="project-meta">Museum Information Management, Spring 2025</div>
+                
+                <div class="project-description">
+                    <p>
+                        A digital collection exploring Victorian-era chatelaines—decorative waist chains that held keys, sewing tools, perfume bottles, and personal objects. The term originates from medieval France, describing the mistress of a household who carried castle keys, and evolved into an emblem of women's domestic power and responsibility.
+                    </p>
+                    <p>
+                        This Omeka S collection catalogs chatelaines by culture, material, and implements, revealing their variability and storytelling potential. The project addresses a gap in digital museum collections, where few institutions maintain substantial chatelaine holdings despite their rich connection to women's labor, class expression, craft traditions, and early consumerism.
+                    </p>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://omekas.prattsi.org/s/whats-on-my-chatelaine/page/welcome">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-image">
+                <img src="chatelaine-screenshot.png" alt="What's on my Chatelaine project screenshot">
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Add more projects here with the same structure -->
+
+    </div>
+
+    <footer>
+        <p>© alana maisel 2025</p>
+    </footer>
+</body>
+</html>
