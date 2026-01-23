@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYPost Environment & Wildlife - Headline Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+   
+        main {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Iframe container styling */
+        .iframe-container {
+            width: 100%;
+            min-height: 850px;
+            display: flex;
+            justify-content: center;
+            background: #0000;
+            padding: 20px 0;
+        }
+        
+        iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 850px;
+            border: none;
+            background: white;
+        }
+
+        /* Override footer positioning for this page */
+        footer {
+            position: static;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 40px auto 0;
+        }
+
+        @media (max-width: 768px) {
+            iframe {
+                height: 900px;
+            }
+
+            .iframe-container {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/index.html">
+        <h1>The Environment & Wildlife of the New York Post</h1>
+    </a>
+    <div class="topnav">
+        <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/search.html">Search</a>
+        <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/aboutproject.html">About</a>
+        <a class="active" href="https://amaisel1.github.io/nypost-environment-and-wildlife/generate.html">Generate</a>
+    </div>
+</div>
+
+<main>
+    <div class="iframe-container">
+        <iframe 
+            src="https://alapoodle-nypost-headline-generator.hf.space"
+            title="NYPost Headline Generator"
+            allow="clipboard-write"
+        ></iframe>
+    </div>
+</main>
+
+<footer> A project by <a href="https://amaisel1.github.io">Alana Maisel</a> 2026</footer>
+
+</body>
+</html>
