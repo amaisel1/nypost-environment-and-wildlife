@@ -67,6 +67,7 @@ h2 {
   font-family: sans-serif;
   box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  background-color: #e8f4fd;
 }
   
 .ticker-container ul {
