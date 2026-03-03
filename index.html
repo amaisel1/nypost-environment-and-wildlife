@@ -3,101 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENVIRONMENT & WILDLIFE</title>
+    <title>ENVIRONMENT & WILDLIFE — New York Post</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Libre+Franklin:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+        :root {
+            --ink: #0d0d0d;
+            --paper: #ffffff;
+            --red: #c41e1e;
+            --tan: #e0d8c4;
+            --mid: #7a7060;
+            --rule: #1a1a1a;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css" />
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Libre Franklin', sans-serif;
+            font-weight: 300;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* MASTHEAD */
+        .masthead {
+            border-bottom: 4px double var(--rule);
+            padding: 20px 48px 16px;
+            background: var(--paper);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 16px;
+        }
+
+        .masthead a { text-decoration: none; color: inherit; }
+
+        .masthead-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--red);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .masthead h1 {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: clamp(18px, 2.4vw, 28px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        .masthead-dateline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            color: var(--mid);
+            letter-spacing: 0.1em;
+            text-align: right;
+            line-height: 1.8;
+        }
+
+        /* NAV */
+        .topnav {
+            background: var(--rule);
+            display: flex;
+            padding: 0 48px;
+            border-bottom: 3px solid var(--red);
+        }
+
+        .topnav a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #999;
+            text-decoration: none;
+            padding: 11px 22px;
+            border-right: 1px solid #2e2e2e;
+            transition: color 0.15s, background 0.15s;
+            display: block;
+        }
+
+        .topnav a:first-child { border-left: 1px solid #2e2e2e; }
+        .topnav a:hover { color: var(--paper); background: #222; }
+        .topnav a.active { color: white; background: var(--red); border-color: var(--red); }
+
+        /* IMAGE */
+        .image-container {
+            width: 320px;
+            height: 220px;
+            margin: 56px auto 0;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid var(--tan);
+        }
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out;
+        }
+
+        img.active { opacity: 1; }
+        img.prev { opacity: 0; }
+
+        .image-hint {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mid);
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: auto;
+            padding: 24px 20px 80px;
+            text-align: center;
+            border-top: 3px double var(--rule);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--mid);
+        }
+
+        footer a { color: var(--red); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* TICKER */
+        .ticker-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--rule);
+            border-top: 3px solid var(--red);
+            overflow: hidden;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-label {
+            background: var(--red);
+            display: flex;
+            align-items: center;
+            align-self: stretch;
+            padding: 0 16px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: white;
+            z-index: 2;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        #ticker {
+            display: flex;
+            list-style: none;
+            animation: ticker-scroll 60s linear infinite;
+        }
+
+        #ticker li {
+            white-space: nowrap;
+            padding: 10px 48px 10px 0;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            color: #ccc;
+        }
+
+        #ticker li::before {
+            content: '\25C6';
+            color: var(--red);
+            margin-right: 16px;
+            font-size: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes ticker-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @media (max-width: 600px) {
+            .masthead { padding: 16px 24px 12px; }
+            .topnav { padding: 0 24px; }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<a href="https://amaisel1.github.io/nypost-environment-and-wildlife/index.html">
-  <h1>The Environment & Wildlife of the New York Post</h1>
-</a>
+
+<div class="masthead">
+    <div>
+        <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/index.html">
+            <span class="masthead-kicker">The New York Post Archive</span>
+            <h1>Environment &amp; Wildlife</h1>
+        </a>
+    </div>
+    <div class="masthead-dateline">
+        Article Archive<br>
+        2013–2025<br>
+        Est. 2024
+    </div>
+</div>
+
 <div class="topnav">
-  <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/search.html">Search</a>
-  <a href= "https://amaisel1.github.io/nypost-environment-and-wildlife/aboutproject.html">About</a>
-  <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/generate.html">Generate</a>
+    <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/search.html">Search</a>
+    <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/aboutproject.html">About</a>
+    <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/generate.html">Generate</a>
 </div>
 
 <div class="image-container" onclick="slideRandomImage()">
     <img id="img1" class="active" src="">
     <img id="img2" src="">
 </div>
-    <script>
-            const images = [];
-        for (let i = 1; i <= 380; i++) {
-            const num = String(i).padStart(3, '0');
-            images.push(`NYPOST IMAGES/nypost.image.${num}.jpg`);
-        }
-        
-        let current = 0;
-        const img1 = document.getElementById("img1");
-        const img2 = document.getElementById("img2");
-        let showingImg1 = true;
-        
-        function getRandomIndex() {
-            let newIndex;
-            do {
-                newIndex = Math.floor(Math.random() * images.length);
-            } while (newIndex === current);
-            current = newIndex;
-            return newIndex;
-        }
-        function slideRandomImage() {
-            console.log("Click detected!");
-            const nextImage = images[getRandomIndex()];
-            
-            if (showingImg1) {
-                img2.src = nextImage;
-                img2.classList.add("active");
-                img1.classList.remove("active");
-                img1.classList.add("prev");
-                setTimeout(() => img1.classList.remove("prev"), 700);
-            } else {
-                img1.src = nextImage;
-                img1.classList.add("active");
-                img2.classList.remove("active");
-                img2.classList.add("prev");
-                setTimeout(() => img2.classList.remove("prev"), 700);
-            }
-            showingImg1 = !showingImg1;
-        }
-        img1.src = images[getRandomIndex()];
-        setInterval(slideRandomImage, 6000);
+<p class="image-hint">click to browse</p>
 
-    </script>
+<footer>A project by <a href="https://amaisel1.github.io">Alana Maisel</a> &nbsp;·&nbsp; 2026</footer>
 
-
-</div>
 <div class="ticker-container">
+    <div class="ticker-label">Headlines</div>
     <ul id="ticker">
-        <li>default headlines</li>
-        <li>error found!</li>
-        <li>no headlines?</li>
+        <li>loading headlines…</li>
     </ul>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script>
+    const images = [];
+    for (let i = 1; i <= 380; i++) {
+        const num = String(i).padStart(3, '0');
+        images.push(`NYPOST IMAGES/nypost.image.${num}.jpg`);
+    }
+
+    let current = 0;
+    const img1 = document.getElementById("img1");
+    const img2 = document.getElementById("img2");
+    let showingImg1 = true;
+
+    function getRandomIndex() {
+        let newIndex;
+        do { newIndex = Math.floor(Math.random() * images.length); }
+        while (newIndex === current);
+        current = newIndex;
+        return newIndex;
+    }
+
+    function slideRandomImage() {
+        const nextImage = images[getRandomIndex()];
+        if (showingImg1) {
+            img2.src = nextImage;
+            img2.classList.add("active");
+            img1.classList.remove("active");
+            img1.classList.add("prev");
+            setTimeout(() => img1.classList.remove("prev"), 700);
+        } else {
+            img1.src = nextImage;
+            img1.classList.add("active");
+            img2.classList.remove("active");
+            img2.classList.add("prev");
+            setTimeout(() => img2.classList.remove("prev"), 700);
+        }
+        showingImg1 = !showingImg1;
+    }
+
+    img1.src = images[getRandomIndex()];
+    setInterval(slideRandomImage, 6000);
+</script>
+
 <script>
     async function loadHeadlines() {
         try {
             const response = await fetch('Environment_Wildlife_Stories_Cleaned.csv');
             const content = await response.text();
-            
             let headlines = [];
-
             Papa.parse(content, {
                 complete: function(results) {
                     results.data.forEach(row => {
-                        if (row[0] && row[0].trim()) {
-                            headlines.push(row[0].trim());
-                        }
+                        if (row[0] && row[0].trim()) headlines.push(row[0].trim());
                     });
-                    
-                    if (headlines.length > 0) {
-                        populateTicker(headlines);
-                    }
+                    if (headlines.length > 0) populateTicker(headlines);
                 },
                 skipEmptyLines: true
             });
@@ -119,13 +319,8 @@
         const shuffled = shuffleArray(headlines);
         const ticker = document.getElementById('ticker');
         ticker.innerHTML = '';
-
-        // Use only first 50-100 headlines for performance
         const subset = shuffled.slice(0, 50);
-        
-        // Duplicate for seamless loop
         const doubled = [...subset, ...subset];
-        
         doubled.forEach(headline => {
             const li = document.createElement('li');
             li.textContent = headline;
@@ -135,7 +330,6 @@
 
     window.addEventListener('DOMContentLoaded', loadHeadlines);
 </script>
-<br><br><br><br>
-<footer> A project by <a href="https://amaisel1.github.io">Alana Maisel</a> 2026</footer>
+
 </body>
 </html>
