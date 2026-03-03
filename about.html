@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT — Environment & Wildlife</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Libre+Franklin:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0d0d0d;
+            --paper: #ffffff;
+            --red: #c41e1e;
+            --tan: #e0d8c4;
+            --mid: #7a7060;
+            --rule: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Libre Franklin', sans-serif;
+            font-weight: 300;
+            min-height: 100vh;
+        }
+
+        .masthead {
+            border-bottom: 4px double var(--rule);
+            padding: 20px 48px 16px;
+            background: var(--paper);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 16px;
+        }
+
+        .masthead a { text-decoration: none; color: inherit; }
+
+        .masthead-kicker {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--red);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .masthead h1 {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: clamp(18px, 2.4vw, 28px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        .masthead-dateline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            color: var(--mid);
+            letter-spacing: 0.1em;
+            text-align: right;
+            line-height: 1.8;
+        }
+
+        .topnav {
+            background: var(--rule);
+            display: flex;
+            padding: 0 48px;
+            border-bottom: 3px solid var(--red);
+        }
+
+        .topnav a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #999;
+            text-decoration: none;
+            padding: 11px 22px;
+            border-right: 1px solid #2e2e2e;
+            transition: color 0.15s, background 0.15s;
+            display: block;
+        }
+
+        .topnav a:first-child { border-left: 1px solid #2e2e2e; }
+        .topnav a:hover { color: var(--paper); background: #222; }
+        .topnav a.active { color: white; background: var(--red); border-color: var(--red); }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 52px 48px 100px;
+        }
+
+        .section-rule {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .section-rule span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--red);
+            white-space: nowrap;
+        }
+
+        .section-rule::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--ink);
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.85;
+            color: #1e1a14;
+            margin-bottom: 1.4em;
+        }
+
+        p a {
+            color: var(--red);
+            text-decoration: none;
+            border-bottom: 1px solid var(--tan);
+            transition: border-color 0.15s;
+        }
+
+        p a:hover { border-color: var(--red); }
+
+        .links {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--tan);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .links a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            color: var(--red);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .links a::before { content: '\2192'; font-size: 14px; }
+        .links a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 64px;
+            padding-top: 20px;
+            border-top: 3px double var(--rule);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--mid);
+            text-align: center;
+        }
+
+        footer a { color: var(--red); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .masthead { padding: 16px 24px 12px; }
+            .topnav { padding: 0 24px; }
+            .container { padding: 32px 24px 80px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="masthead">
+    <div>
+        <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/index.html">
+            <span class="masthead-kicker">The New York Post Archive</span>
+            <h1>Environment &amp; Wildlife</h1>
+        </a>
+    </div>
+    <div class="masthead-dateline">
+        Article Archive<br>
+        About the Project<br>
+        Est. 2024
+    </div>
+</div>
+
+<div class="topnav">
+    <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/search.html">Search</a>
+    <a class="active" href="https://amaisel1.github.io/nypost-environment-and-wildlife/aboutproject.html">About</a>
+    <a href="https://amaisel1.github.io/nypost-environment-and-wildlife/generate.html">Generate</a>
+</div>
+
+<div class="container">
+
+    <div class="section-rule"><span>About</span></div>
+
+    <p>This is a webpage representing a project for INFO-664 Programming Cultural Heritage at Pratt Info School in the Fall of 2025 by <a href="https://amaisel1.github.io/">Alana Maisel</a>.</p>
+
+    <p>Data was web-scraped from the The New York Post's Environment and Wildlife sub-sections, utilizing Selenium for web scraping and NLTK for language processing. The result is a cleaned dataset of headlines, article excerpts, and their publish dates. The captured article data spans from the website's re-launch in 2013 to 2025, with over 2,400 articles represented.</p>
+
+    <p>The NYPost, owned by Rupert Murdoch, is one of many online-focused media outlets with sensationalist tones towards science coverage as it interacts with politically right-leaning news coverage. The outlet is one of few online news sources not using a paywall model, allowing for wide readership and headline-focused social media dissemination. According to the trade journal Press Gazette, The New York Post was ranked 3rd in paper circulation in the United States in 2023, and the news website consistently ranks in the top ten among visits nationally.</p>
+
+    <p>Coverage about the environment and wildlife creates its own distinct reader ecosystem, shaping how readers encounter explicitly political and social content placed alongside it. The basic article data of the "flora and fauna" collected here, separated from their contextual story content, is how many digital readers encounter this information. The content is both humorously absurd, apocalyptic, and targets interests and anxieties of its wide readership. Observationally, the Post generally runs social interest stories as continued coverage, mirroring algorithmic content consumption, with multiple specific stories interacting with topics of editorial interest such as immigration, gender politics, and street safety. The environment and wildlife sections also use this editorial model, with concurrent articles about microplastics, animal disease, and environmental toxicity.</p>
+
+    <p>Training an AI model, as done in this project, is one way of experimenting with creative production in collaboration with the article data, made possible by web-scraping. The generation of fictional headlines becomes a way to tap into and parody the paper's distinctive editorial voice and the world- building it performs. By discovering these headlines dissociated from their source, the author of this project hopes you can find ways to creatively engage with these narratives, or discover new insights about language use, patterns over time, or even assessing truth, though representing facts is not the goal of this project.</p>
+
+    <div class="links">
+        <a href="Environment_Wildlife_Stories_Cleaned.csv" download>Download the Dataset</a>
+        <a href="http://huggingface.co/alapoodle/nypost-environment-headlines" target="_blank" rel="noopener noreferrer">View the AI Model on HuggingFace</a>
+    </div>
+
+    <footer>A project by <a href="https://amaisel1.github.io">Alana Maisel</a> &nbsp;·&nbsp; 2026</footer>
+
+</div>
+
+</body>
+</html>
